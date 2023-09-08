@@ -15,7 +15,7 @@ sudo chown -R admin:admin /var/run/kytos
 sudo chown -R admin:admin /var/tmp/kytos
 sudo chown -R admin:admin /etc/kytos
 cp ./2_venvinstall.sh /kytos/2_venvinstall.sh
-cp ./3_postinstall.sh /kytos/3_postinstall.sh
+cp ./3_pipinstall.sh /kytos/3_pipinstall.sh
 cp ./4_clone_kytos.sh /kytos/.
 cp ./5_install_kytos.sh /kytos/.
 cp ./docker-compose.yml /kytos/.

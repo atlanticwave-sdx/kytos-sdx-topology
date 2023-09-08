@@ -60,7 +60,7 @@ $ ./2_venvinstall.sh
 
 $ cd /kytos
 
-$ source python-kytos/bin/activate
+$ source venv-python3.9/bin/activate
 
 * Download and run after the environment is activated
 
@@ -96,7 +96,7 @@ https://github.com/atlanticwave-sdx/kytos-sdx-topology/blob/main/envsetup/instal
 
 https://github.com/atlanticwave-sdx/kytos-sdx-topology/blob/main/envsetup/install/6_add-etc-hosts.sh
 
-(venv-python3.9) cd /kytos/sdx_topology/install
+(venv-python3.9) cd /kytos/sdx_topology/envsetup/install
 
 (venv-python3.9) ./6_add-etc-hosts.sh
 
@@ -112,7 +112,7 @@ https://github.com/atlanticwave-sdx/kytos-sdx-topology/blob/main/envsetup/instal
 
 https://github.com/atlanticwave-sdx/kytos-sdx-topology/blob/main/envsetup/install/7_rs-init.sh
 
-(venv-python3.9) cd /kytos/sdx_topology/install
+(venv-python3.9) cd /kytos/sdx_topology/envsetup/install
 
 (venv-python3.9) ./7_rs-init.sh
 
