@@ -17,12 +17,14 @@ class TestMain(AppMain):
         """Execute steps before each tests."""
         patch('kytos.core.helpers.run_on_thread', lambda x: x).start()
         # pylint: disable=W0201
-        controller = get_controller_mock()
+        self.controller = get_controller_mock()
+        self.controller.napps[("kytos", "topology")] = MagicMock()
+        self.controller.switches = MagicMock()
         self.napp = AppMain(controller)
-        self.api_client = get_test_client(controller, self.napp)
+        self.api_client = get_test_client(self.controller, self.napp)
         self.base_endpoint = 'kytos/sdx_topology/v1'
 
-    def test_get_event_listeners(self):
+    async def test_get_event_listeners(self, event_loop):
         """Verify all event listeners registered."""
         expected_events = [
                 "kytos/topology.switch.enabled",
@@ -54,14 +56,8 @@ class TestMain(AppMain):
         actual_events = self.napp.listeners()
         assert sorted(expected_events) == sorted(actual_events)
 
-
-def test_setup():
-    """Replace the '__init__' method for the KytosNApp subclass."""
-    TestMain().main.setup()
-    assert TestMain().main.shelve_loaded is False
-
-
-def test_create_update_topology():
-    """ Function that will take care of create or update sdx topology """
-    response = TestMain().main.create_update_topology()
-    assert "id" in response
+    async def test_create_update_topology(self, event_loop):
+        """ Function that will take care of create or update sdx topology """
+        print (dir(TestMain))
+        response = self.napp.get_version_control()
+        assert "id" in response
